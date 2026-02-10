@@ -51,6 +51,20 @@ pipeline{
             steps {
                 bat 'docker-compose up --build -d'
             }
+           /*  post{
+                            failure{
+                                    mail(subject: "Build echec:",
+                                            body:"Le build a réussi.",
+                                            to: "rina.ra.1804@gmail.com"
+                                            )
+                            }
+                            success{
+                                    mail(subject: "Build réussi:",
+                                                body:"Le build a réussi.",
+                                                to: "rina.ra.1804@gmail.com"
+                                                )
+                            }
+                        }  */
         }
     }
 }
