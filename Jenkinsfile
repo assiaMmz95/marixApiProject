@@ -48,6 +48,9 @@ pipeline{
             }
         }
         stage('deploy'){
+            steps {
+                 bat 'mvn deploy'
+            }
             /* steps {
                 bat 'docker-compose up --build -d'
             } */

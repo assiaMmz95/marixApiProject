@@ -13,6 +13,14 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>myMavenRepo.write</id>
+            <url>https://mymavenrepo.com/repo/SGw270jwHqbKW4DZaKj3/</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <!-- Cucumber Java -->
         <dependency>
