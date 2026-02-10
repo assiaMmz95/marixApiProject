@@ -48,9 +48,9 @@ pipeline{
             }
         }
         stage('deploy'){
-            steps {
+            /* steps {
                 bat 'docker-compose up --build -d'
-            }
+            } */
            /*  post{
                             failure{
                                     mail(subject: "Build echec:",
