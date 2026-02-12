@@ -69,17 +69,14 @@ pipeline{
                             }
                         }  */
         }
-        stage('slack') {
-
+        stage('notification') {
                     steps {
                         bat """
                         curl.exe -X POST -H "Content-type: application/json"
                         --data "{\\"text\\":\\"Hello, World!\\"}"
-                        "%slack_webhook%"
+                        "%SLACK_WEBHOOK%"
                         """
-
-
-                          }
+                    }
 
                 }
     }
