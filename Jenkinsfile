@@ -69,16 +69,13 @@ pipeline{
                             }
                         }  */
         }
-        stage('slack') {
-            steps {
-                powershell '''
-                curl.exe -X POST `
-                  -H "Content-type: application/json" `
-                  --data "{\\"text\\":\\"Hello, World!\\"}" `
-                  "$SLACK_WEBHOOK"
-                '''
+        stage('slack'){
+            steps{
+                bat '''curl -X POST
+                -H 'Content-type: application/json'
+                --data '{"text":"Hello, World!"}'
+                "$SLACK_WEBHOOK"'''
             }
         }
-
     }
 }
