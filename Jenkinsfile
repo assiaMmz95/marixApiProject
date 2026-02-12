@@ -93,8 +93,8 @@ pipeline{
        }
        stage("realease"){
             steps{
-                bat """git tag -a v1.6 -m "%VERSION%"
-                git push origin v1.6
+                bat """git tag -a v1.7 -m "%VERSION%"
+                git push origin v1.7
                 """
                 withCredentials([string(credentialsId: 'TOKEN', variable: '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')]) {
                     bat """
@@ -102,7 +102,7 @@ pipeline{
                        -H "Authorization: Bearer "%TOKEN%"^
                        -H "Accept: application/vnd.github+json" ^
                        -H "Content-Type: application/json" ^
-                       -d "{\\"tag_name\\":\\"v1.6\\",\\"name\\":\\"%VERSION%\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
+                       -d "{\\"tag_name\\":\\"v1.7\\",\\"name\\":\\"%VERSION%\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
                     """
                 }
             }
