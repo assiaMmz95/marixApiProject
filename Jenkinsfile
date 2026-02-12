@@ -69,5 +69,13 @@ pipeline{
                             }
                         }  */
         }
+        stage('slack'){
+            steps{
+                bat '''curl -X POST
+                -H 'Content-type: application/json'
+                --data '{"text":"Hello, World!"}'
+                "$SLACK_WEBHOOK"'''
+            }
+        }
     }
 }
