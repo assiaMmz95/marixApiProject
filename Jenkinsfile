@@ -96,6 +96,18 @@ pipeline{
                 bat """git tag -a v1.0 -m "%VERSION%"
                 git push origin v1.0
                 """
+                bat """curl -X POST https://github.com/assiaMmz95/marixApiProject/releases \
+                  -H "Authorization: Bearer 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" \
+                  -H "Accept: application/vnd.github+json" \
+                  -H "Content-Type: application/json" \
+                  -d '{
+                    "tag_name": "v1.0",
+                    "name": "Release v1.0",
+                    "body": "Production release",
+                    "draft": false,
+                    "prerelease": false
+                  }'
+                """
             }
        }
     }
