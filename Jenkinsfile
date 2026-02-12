@@ -93,8 +93,8 @@ pipeline{
        }
        stage("realease"){//
             steps{
-                bat """git tag -a v1.1 -m "%VERSION%"
-                git push origin v1.1
+                bat """git tag -a v1.2 -m "%VERSION%"
+                git push origin v1.2
                 """
                 bat """
                    curl -X POST https://github.com/assiaMmz95/marixApiProject/releases^
