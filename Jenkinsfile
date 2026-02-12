@@ -97,7 +97,7 @@ pipeline{
                 bat """git tag -a v2.0 -m "%VERSION%"
                 git push origin v2.0
                 """
-                withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
                     bat """
                        curl -X POST https://api.github.com/repos/assiaMmz95/marixApiProject/releases^
                        -H "Authorization: Bearer "%GITHUB_TOKEN%"^
