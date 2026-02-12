@@ -69,15 +69,16 @@ pipeline{
                             }
                         }  */
         }
-        stage('notification') {
-                    steps {
-                        bat """
-                        curl.exe -X POST -H "Content-type: application/json"
-                        --data "{\\"text\\":\\"Hello, World!\\"}"
-                        "%SLACK_WEBHOOK%"
-                        """
-                    }
+       stage('slack') {
+           steps {
+               bat """
+               curl.exe -X POST ^
+                 -H "Content-type: application/json" ^
+                 --data "{\\"text\\":\\"Hello, World!\\"}" ^
+                 "%SLACK_WEBHOOK%"
+               """
+           }
+       }
 
-                }
     }
 }
