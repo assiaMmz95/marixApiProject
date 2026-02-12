@@ -93,15 +93,15 @@ pipeline{
        }
        stage("realease"){
             steps{
-                bat """git tag -a v1.3 -m "%VERSION%"
-                git push origin v1.3
+                bat """git tag -a v1.4 -m "%VERSION%"
+                git push origin v1.4
                 """
                 bat """
                    curl -X POST https://github.com/assiaMmz95/marixApiProject/releases^
                    -H "Authorization: Bearer TOKEN" ^
                    -H "Accept: application/vnd.github+json" ^
                    -H "Content-Type: application/json" ^
-                   -d "{\\"tag_name\\":\\"v%VERSION%\\",\\"name\\":\\"Release v%VERSION%\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
+                   -d "{\\"tag_name\\":\\"v1.4\\",\\"name\\":\\"Release v1.4\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
                 """
             }
        }
