@@ -91,5 +91,12 @@ pipeline{
                        }
                    }
        }
+       stage("realease"){
+            steps{
+                bat """git lag -a v1.0 -m "%VERSION%"
+                git push origin v1.0
+                """
+            }
+       }
     }
 }
