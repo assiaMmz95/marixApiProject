@@ -98,7 +98,7 @@ pipeline{
                 """
                 bat """
                    curl -X POST https://api.github.com/repos/assiaMmz95/marixApiProject/releases^
-                   -H "Authorization: Bearer TOKEN" ^
+                   -H "Authorization: Bearer "%TOKEN%"" ^
                    -H "Accept: application/vnd.github+json" ^
                    -H "Content-Type: application/json" ^
                    -d "{\\"tag_name\\":\\"v1.6\\",\\"name\\":\\"%VERSION%\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
