@@ -91,6 +91,7 @@ pipeline{
                        }
                    }
        }
+       
        stage("realease"){
             steps{
                 bat """git tag -a v1.9 -m "%VERSION%"
