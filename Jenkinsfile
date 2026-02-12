@@ -69,16 +69,34 @@ pipeline{
                             }
                         }  */
         }
-       stage('slack') {
-           steps {
-               bat """
-               curl.exe -X POST ^
-                 -H "Content-type: application/json" ^
-                 --data "{\\"text\\":\\"Hello, World!\\"}" ^
-                 "%SLACK_WEBHOOK%"
-               """
-           }
+       stage("notification"){
+                   parallel{
+                       stage('slack') {
+                           steps {
+                               bat """
+                               curl.exe -X POST ^
+                                 -H "Content-type: application/json" ^
+                                 --data "{\\"text\\":\\"Hello, World!\\"}" ^
+                                 "%SLACK_WEBHOOK%"
+                               """
+                           }
+                       }
+                       post{
+                             failure{
+                                                           mail(subject: "Build echec:",
+                                                                   body:"Le build a réussi.",
+                                                                   to: "rina.ra.1804@gmail.com"
+                                                                   )
+                             }
+                             success{
+                                                           mail(subject: "Build réussi:",
+                                                                       body:"Le build a réussi.",
+                                                                       to: "rina.ra.1804@gmail.com"
+                                                                       )
+                                                   }
+                             }
+                       }
+                   }
        }
-
     }
 }
