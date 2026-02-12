@@ -91,22 +91,22 @@ pipeline{
                        }
                    }
        }
-
        stage("realease"){
-            steps{
-                bat """git tag -a v2.0 -m "%VERSION%"
-                git push origin v2.0
-                """
-                withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
-                    bat """
-                       curl -X POST https://api.github.com/repos/assiaMmz95/marixApiProject/releases^
-                       -H "Authorization: Bearer "%GITHUB_TOKEN%"^
-                       -H "Accept: application/vnd.github+json" ^
-                       -H "Content-Type: application/json" ^
-                       -d "{\\"tag_name\\":\\"v2.0\\",\\"name\\":\\"%VERSION%\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
-                    """
-                }
-            }
+                   steps{
+                       bat """git tag -a v2.0 -m "%VERSION%"
+                       git push origin v2.0
+                       """
+                       withCredentials([string(credentialsId: 'github_token', variable: 'GITHUB_TOKEN')]) {
+                           bat """
+                              curl -X POST https://api.github.com/repos/assiaMmz95/marixApiProject/releases^
+                              -H "Authorization: Bearer "%GITHUB_TOKEN%"^
+                              -H "Accept: application/vnd.github+json" ^
+                              -H "Content-Type: application/json" ^
+                              -d "{\\"tag_name\\":\\"v2.0\\",\\"name\\":\\"%VERSION%\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
+                           """
+                       }
+                   }
        }
+
     }
 }
