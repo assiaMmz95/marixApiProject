@@ -91,7 +91,7 @@ pipeline{
                        }
                    }
        }
-       stage("realease"){//
+       stage("realease"){
             steps{
                 bat """git tag -a v1.2 -m "%VERSION%"
                 git push origin v1.2
