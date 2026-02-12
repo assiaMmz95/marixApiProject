@@ -71,12 +71,16 @@ pipeline{
         }
         stage('slack'){
             steps{
-                powershell  '''
-                curl -X POST
-                -H 'Content-type: application/json'
-                --data '{"text":"Hello, World!"}'
-                "$SLACK_WEBHOOK"
-                '''
+                powershell """
+                       \$body = @{
+                           text = "deploy completed succesfully!"
+                       } | ConvertTo-Json
+
+                       Invoke-RestMethod -Uri "${slackUrl}" `
+                                         -Method Post `
+                                         -ContentType "application/json" `
+                                         -Body \$body
+"""
             }
         }
     }
