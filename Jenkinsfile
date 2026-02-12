@@ -93,16 +93,16 @@ pipeline{
        }
        stage("realease"){
             steps{
-                bat """git tag -a v1.8 -m "%VERSION%"
-                git push origin v1.8
+                bat """git tag -a v1.9 -m "%VERSION%"
+                git push origin v1.9
                 """
-                withCredentials([string(credentialsId: 'TOKEN', variable: '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')]) {
+                withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
                     bat """
                        curl -X POST https://api.github.com/repos/assiaMmz95/marixApiProject/releases^
-                       -H "Authorization: Bearer "%TOKEN%"^
+                       -H "Authorization: Bearer "%GITHUB_TOKEN%"^
                        -H "Accept: application/vnd.github+json" ^
                        -H "Content-Type: application/json" ^
-                       -d "{\\"tag_name\\":\\"v1.8\\",\\"name\\":\\"%VERSION%\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
+                       -d "{\\"tag_name\\":\\"v1.9\\",\\"name\\":\\"%VERSION%\\",\\"body\\":\\"Production release\\",\\"draft\\":false,\\"prerelease\\":false}"
                     """
                 }
             }
