@@ -97,7 +97,7 @@ pipeline{
                 git push origin v1.6
                 """
                 bat """
-                   curl -X POST https://github.com/assiaMmz95/marixApiProject/releases^
+                   curl -X POST https://api.github.com/repos/assiaMmz95/marixApiProject/releases^
                    -H "Authorization: Bearer TOKEN" ^
                    -H "Accept: application/vnd.github+json" ^
                    -H "Content-Type: application/json" ^
