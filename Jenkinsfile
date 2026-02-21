@@ -9,7 +9,7 @@ pipeline{
         } */
         stage('test'){
            steps {
-                 bat 'mvnw.cmd clean test'
+                 bat './mvnw test'
                  junit 'target/surefire-reports/*.xml'
                  cucumber   reportTitle: 'My report',
                            fileIncludePattern: 'target/example-report.json'
