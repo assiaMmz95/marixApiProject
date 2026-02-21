@@ -1,11 +1,12 @@
 pipeline{
     agent any
     stages{
-        /* stage('init'){
+         stage('init'){
             steps {
-                bat './mvnw clean'
+               // bat './mvnw clean'
+                bat 'mvn clean'
             }
-        } */
+        } 
 
         stage('test'){
            steps {
@@ -91,7 +92,7 @@ pipeline{
                        }
                    }
        }
-       
+
        stage("realease"){
                    steps{
                        bat """git tag -a v2.1 -m "%VERSION%"
